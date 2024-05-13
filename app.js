@@ -1,7 +1,7 @@
 
 require("dotenv").config()
 const express = require("express")
-const dbConnect = require("./config/mongo")
+//const dbConnect = require("./config/mongo")
 const cors = require("cors")
 const app = express()
 
@@ -14,10 +14,10 @@ const port = process.env.PORT || 3000
  * Aqui invocamos a las rutas
  */
 
-app.use("/api", require("./routes/user"))
+app.use("/api", require("./routes"))
 
 app.listen(port, () =>{
     console.log(`http://localhost:${port}`)
 })
 
-dbConnect()
+//dbConnect()
