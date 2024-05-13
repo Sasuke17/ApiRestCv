@@ -24,4 +24,5 @@ const User = sequelize.define(
 );
 User.find = User.findAll;
 User.findById = User.findByPk;
+
 module.exports = User;

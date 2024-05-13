@@ -9,7 +9,7 @@ const { handleHttpError } = require("../utils/handleError");
 const getUsers = async  (req, res) =>{
     try {
         const user = req.user;
-        const data = await usersModel.findAllData({});
+        const data = await usersModel.findAll({});
         res.send({ data,  user });
       } catch (e) {
         console.log(e)
@@ -25,7 +25,7 @@ const getUser = async (req, res) =>{
     try{
         req = matchedData(req);
         const {id} = req;
-        const data = await usersModel.findOneData(id);
+        const data = await usersModel.findByPk(id);
         res.send({ data });
       }catch(e){
         handleHttpError(res,"ERROR_GET_USER")
