@@ -55,7 +55,7 @@ const createUser = async (req, res) =>{
 const updateUser = async (req, res) =>{
     try {
         const {id, ...body} = matchedData(req);
-        const data = await usersModel.findOneAndUpdate(
+        const data = await usersModel.findByIdAndUpdate(
           id, body
         );
         res.send({ data });
