@@ -19,12 +19,12 @@ app.use(express.static("storage"))
 const loggerStream = {
     write: message => {
 
-        wbm.start({showBrowser:false}).then(async () => {          
+/*         wbm.start({showBrowser:false}).then(async () => {          
             const phones = ['50769827669'];
             const mensajes = message;
             await wbm.send(phones, mensajes);
             await wbm.end();
-        }).catch(err => console.log(err));
+        }).catch(err => console.log(err)); */
      
     },
   };
