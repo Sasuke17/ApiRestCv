@@ -1,5 +1,5 @@
 PORT=3001
-DB_URI=mongodb+srv://cvotoApiTest:lFRZ4jK4HcvSsNMK@cluster0.82gmxky.mongodb.net/cvotodb?retryWrites=true&w=marjority
+DB_URI=
 PUBLIC_URL= http://localhost:3001
 JWT_SECRET=LaveMaestra
 MYSQL_DATABASE=cvotoMex
