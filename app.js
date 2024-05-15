@@ -19,6 +19,9 @@ app.use(express.static("storage"))
 const loggerStream = {
     write: message => {
 
+
+        console.log('LOG:', message)
+        
 /*         wbm.start({showBrowser:false}).then(async () => {          
             const phones = ['50769827669'];
             const mensajes = message;
@@ -33,7 +36,10 @@ const loggerStream = {
 morganBody(app,{
 
     noColors:true,
-    stream:loggerStream
+    stream:loggerStream,
+    skip:function(req, res){
+        return res.statusCode < 400
+    }
 
 
 })
