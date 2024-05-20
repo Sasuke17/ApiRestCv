@@ -3,11 +3,11 @@ require("dotenv").config()
 const express = require("express")
 const {dbConnectMySql} = require("./config/mysql")
 const cors = require("cors")
+const swaggerUI = require("swagger-ui-express")
 const app = express()
+const loggerStream = require("./utils/handleLogger");
 const morganBody = require("morgan-body")
-const wbm = require('wbm');
-
-
+const openApiConfiguration = require("./docs/swagger")
 
 const ENGINE_DB = process.env.ENGINE_DB;
 
@@ -16,21 +16,7 @@ app.use(cors())
 app.use(express.json())
 app.use(express.static("storage"))
 
-const loggerStream = {
-    write: message => {
 
-
-        console.log('LOG:', message)
-        
-/*         wbm.start({showBrowser:false}).then(async () => {          
-            const phones = ['50769827669'];
-            const mensajes = message;
-            await wbm.send(phones, mensajes);
-            await wbm.end();
-        }).catch(err => console.log(err)); */
-     
-    },
-  };
   
 
 morganBody(app,{
@@ -46,6 +32,13 @@ morganBody(app,{
 
 const port = process.env.PORT || 3000
 
+/**
+ * 
+ * Definir ruta de documentacion
+ */
+app.use('/documentacion', 
+swaggerUI.serve, 
+swaggerUI.setup(openApiConfiguration))
 /**
  * 
  * Aqui invocamos a las rutas
